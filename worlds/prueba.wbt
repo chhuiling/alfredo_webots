@@ -8,18 +8,69 @@ WorldInfo {
   basicTimeStep 12
 }
 Viewpoint {
-  orientation -0.28201926647589937 0.029301239652399225 0.9589611935272607 2.9429898436709845
-  position 54.954416930711645 -9.515146693637663 40.518076056080574
+  orientation 0.5953662942115701 0.42106753976033157 -0.6842814498997936 2.2401339434639143
+  position -0.12639072682006808 1.916366014118233 5.995068606467708
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 CircleArena {
-  radius 20
+  radius 10
 }
 Robot {
-  translation -0.112488 -0.392236 4.65484
+  translation 0.21 -0.46 3.11
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.33 -0.0999998 -2.13
+      }
+      device [
+        RotationalMotor {
+          name "motor_aspa"
+        }
+      ]
+      endPoint Solid {
+        translation -0.33 0.0999998 -2.13
+        rotation 0 0 1 0.261799
+        children [
+          DEF ASPA_SERVO Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.75 3.5 0.3
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+    Solid {
+      translation -0.0043988 0.109912 -1.38
+      rotation 0 0 1 0.04
+      children [
+        DEF SERVO Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            transparency 0.05
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 2.4 1.8 1.2
+          }
+        }
+      ]
+    }
+  ]
+  name "motor_aspa"
+  controller "mover_aspa_servo"
+}
+Robot {
+  translation -0.11251841825786181 -0.39190549500475075 -0.005162649938375896
   rotation 0.0017485402009863144 0.00015810603679987126 0.9999984588036358 0.04076242876803916
   children [
     Group {
@@ -70,6 +121,7 @@ Robot {
           children [
             DEF C15 Shape {
               appearance PBRAppearance {
+                transparency 1
                 metalness 0
               }
               geometry Mesh {
@@ -89,6 +141,7 @@ Robot {
           children [
             DEF ROTOR Shape {
               appearance PBRAppearance {
+                transparency 1
               }
               geometry Mesh {
                 url [
@@ -102,7 +155,7 @@ Robot {
           physics USE M3D
         }
         Solid {
-          translation 0.0160313 0.0764827 2.12851
+          translation 0.01603261661669573 0.07648490477701853 1.9985128709514854
           rotation 0.01899286689548021 -0.009673869771031584 0.9997728178195002 0.0008207718687865466
           children [
             DEF C18 Shape {
@@ -121,7 +174,7 @@ Robot {
           physics USE M3D
         }
         Solid {
-          translation 0 0 0.06
+          translation 0 0 -0.07
           rotation 0 0 1 1.8
           children [
             DEF ROTOR Shape {
@@ -138,24 +191,6 @@ Robot {
           boundingObject USE ROTOR
           physics USE M3D
         }
-        Solid {
-          translation 0 0 -4.64
-          children [
-            Shape {
-              appearance PBRAppearance {
-                metalness 0
-              }
-              geometry DEF BASE Mesh {
-                url [
-                  "../meshes/embudo.obj"
-                ]
-              }
-            }
-          ]
-          name "base"
-          boundingObject USE BASE
-          physics USE M3D
-        }
       ]
     }
   ]
@@ -163,13 +198,13 @@ Robot {
   physics USE M3D
 }
 Solid {
-  translation 4.34 1.24 17.13
+  translation 4.34 1.24 12.29
   children [
     DEF PILL Shape {
       appearance PBRAppearance {
       }
       geometry Sphere {
-        radius 0.35
+        radius 0.5
       }
     }
   ]
