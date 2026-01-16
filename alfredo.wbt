@@ -1,0 +1,37 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.33513227628088776 0.21648000879328733 0.9169638832514881 2.0720997870716578
+  position 118.09351654416237 -210.95114250429168 228.69719305180388
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 100 100
+}
+Solid {
+  translation 0 0 32.99
+  children [
+    DEF CONTENEDOR Shape {
+      appearance PBRAppearance {
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../meshes/contenedores.stl"
+        ]
+      }
+    }
+  ]
+  boundingObject USE CONTENEDOR
+  physics Physics {
+  }
+}
