@@ -8,8 +8,8 @@ WorldInfo {
   basicTimeStep 12
 }
 Viewpoint {
-  orientation -0.28201926647589937 0.029301239652399225 0.9589611935272607 2.9429898436709845
-  position 54.954416930711645 -9.515146693637663 40.518076056080574
+  orientation -0.15936579204742585 0.06581670864568336 0.9850232003298938 2.368890503721041
+  position 49.98996214791713 -43.09074993179515 33.53045637500306
 }
 TexturedBackground {
 }
@@ -22,13 +22,14 @@ Robot {
   translation -0.112488 -0.392236 4.65484
   rotation 0.0017485402009863144 0.00015810603679987126 0.9999984588036358 0.04076242876803916
   children [
-    Group {
+    DEF ALFREDO Group {
       children [
         Solid {
           translation 0 0 10.14
           children [
             DEF C12 Shape {
               appearance PBRAppearance {
+                transparency 0.5
                 metalness 0
               }
               geometry Mesh {
@@ -42,10 +43,59 @@ Robot {
           boundingObject USE C12
           physics DEF M3D Physics {
             density -1
-            mass 1
+            mass 3
             damping Damping {
             }
           }
+        }
+        Robot {
+          translation 0.3 -0.08 11.27
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+                anchor -0.33 -0.0999998 -2.13
+              }
+              device [
+                RotationalMotor {
+                  name "aspa_motor_ct12"
+                }
+              ]
+              endPoint Solid {
+                translation -0.3 0.07999999999999999 -2.13
+                rotation 0 0 1 0.23000000000000087
+                children [
+                  DEF ASPA_SERVO Shape {
+                    appearance PBRAppearance {
+                      roughness 1
+                      metalness 0
+                    }
+                    geometry Box {
+                      size 0.75 3.5 0.3
+                    }
+                  }
+                ]
+                name "solid(1)"
+              }
+            }
+            Solid {
+              translation -0.0043988 0.109912 -1.38
+              children [
+                DEF SERVO Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 2.4 1.8 1.2
+                  }
+                }
+              ]
+            }
+          ]
+          name "servo_ct12"
+          controller "mover_servo_ct12"
         }
         Solid {
           translation 0 0 8.1
@@ -70,6 +120,7 @@ Robot {
           children [
             DEF C15 Shape {
               appearance PBRAppearance {
+                transparency 0.5
                 metalness 0
               }
               geometry Mesh {
@@ -82,6 +133,57 @@ Robot {
           name "C15"
           boundingObject USE C15
           physics USE M3D
+        }
+        Robot {
+          translation 0.3 -0.08 7.15
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+                anchor -0.33 -0.0999998 -2.13
+              }
+              device [
+                RotationalMotor {
+                  name "aspa_motor_ct15"
+                }
+              ]
+              endPoint Solid {
+                translation -0.3 0.07999999999999999 -2.13
+                rotation 0 0 1 0.23000000000000087
+                children [
+                  DEF ASPA_SERVO Shape {
+                    appearance PBRAppearance {
+                      roughness 1
+                      metalness 0
+                    }
+                    geometry Box {
+                      size 0.75 3.5 0.3
+                    }
+                  }
+                ]
+                name "solid(1)"
+              }
+            }
+            Solid {
+              translation -0.0043988 0.109912 -1.38
+              rotation 0 0 1 0.04
+              children [
+                DEF SERVO Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    transparency 0.05
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 2.4 1.8 1.2
+                  }
+                }
+              ]
+            }
+          ]
+          name "servo_ct15"
+          controller "mover_servo_ct15"
         }
         Solid {
           translation 0 0 3.98
@@ -107,6 +209,7 @@ Robot {
           children [
             DEF C18 Shape {
               appearance PBRAppearance {
+                transparency 0.5
                 metalness 0
               }
               geometry Mesh {
@@ -119,6 +222,57 @@ Robot {
           name "C18"
           boundingObject USE C18
           physics USE M3D
+        }
+        Robot {
+          translation 0.3 -0.08 3.24
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+                anchor -0.33 -0.0999998 -2.13
+              }
+              device [
+                RotationalMotor {
+                  name "aspa_motor_ct18"
+                }
+              ]
+              endPoint Solid {
+                translation -0.3 0.07999999999999999 -2.13
+                rotation 0 0 1 0.23000000000000087
+                children [
+                  DEF ASPA_SERVO Shape {
+                    appearance PBRAppearance {
+                      roughness 1
+                      metalness 0
+                    }
+                    geometry Box {
+                      size 0.75 3.5 0.3
+                    }
+                  }
+                ]
+                name "solid(1)"
+              }
+            }
+            Solid {
+              translation -0.0043988 0.109912 -1.38
+              rotation 0 0 1 0.04
+              children [
+                DEF SERVO Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    transparency 0.05
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 2.4 1.8 1.2
+                  }
+                }
+              ]
+            }
+          ]
+          name "servo_ct18"
+          controller "mover_servo_ct18"
         }
         Solid {
           translation 0 0 0.06
