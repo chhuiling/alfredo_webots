@@ -8,8 +8,8 @@ WorldInfo {
   basicTimeStep 12
 }
 Viewpoint {
-  orientation -0.15936579204742585 0.06581670864568336 0.9850232003298938 2.368890503721041
-  position 49.98996214791713 -43.09074993179515 33.53045637500306
+  orientation 0.025498795607138677 0.011506332002295722 -0.9996086312884851 3.3265621192972215
+  position 77.84605932233042 -13.651557770432815 18.13891221716891
 }
 TexturedBackground {
 }
@@ -19,17 +19,143 @@ CircleArena {
   radius 20
 }
 Robot {
-  translation -0.112488 -0.392236 4.65484
+  translation -0.1071786605017715 -0.3869679827611363 7.909042681704227
   rotation 0.0017485402009863144 0.00015810603679987126 0.9999984588036358 0.04076242876803916
   children [
     DEF ALFREDO Group {
       children [
+        Robot {
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+              }
+              device [
+                RotationalMotor {
+                  name "aspa_motor_ct18"
+                  maxTorque 200
+                }
+              ]
+              endPoint Solid {
+                translation 0 0 0.06
+                rotation 0 0 1 1.8000000000000003
+                children [
+                  DEF ROTOR Shape {
+                    appearance PBRAppearance {
+                      baseColor 1 0 0
+                      metalness 0
+                    }
+                    geometry Mesh {
+                      url [
+                        "../meshes/rotor.obj"
+                      ]
+                    }
+                  }
+                ]
+                name "R3"
+                boundingObject USE ROTOR
+                physics DEF M3D Physics {
+                  density -1
+                  mass 2
+                  damping Damping {
+                  }
+                }
+              }
+            }
+          ]
+          name "R18"
+          controller "mover_servo_ct18"
+        }
+        Robot {
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+              }
+              device [
+                RotationalMotor {
+                  name "aspa_motor_ct15"
+                  maxTorque 200
+                }
+              ]
+              endPoint Solid {
+                translation 0 0 3.98
+                rotation 0 0 1 1.8000000000000003
+                children [
+                  DEF ROTOR Shape {
+                    appearance PBRAppearance {
+                      baseColor 1 0 0
+                      metalness 0
+                    }
+                    geometry Mesh {
+                      url [
+                        "../meshes/rotor.obj"
+                      ]
+                    }
+                  }
+                ]
+                name "R2"
+                boundingObject USE ROTOR
+                physics DEF M3D Physics {
+                  density -1
+                  mass 2
+                  damping Damping {
+                  }
+                }
+              }
+            }
+          ]
+          name "R15"
+          controller "mover_servo_ct15"
+        }
+        Robot {
+          translation 0 0 10.44
+          children [
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0 0 1
+              }
+              device [
+                RotationalMotor {
+                  name "aspa_motor_ct12"
+                  maxTorque 200
+                }
+              ]
+              endPoint Solid {
+                translation -0.0737387 0.291881 -2.348
+                rotation 1.4199699788436549e-06 -0.00017261599742816842 0.9999999851008505 1.79794
+                children [
+                  DEF ROTOR Shape {
+                    appearance PBRAppearance {
+                      baseColor 1 0 0
+                      metalness 0
+                    }
+                    geometry Mesh {
+                      url [
+                        "../meshes/rotor.obj"
+                      ]
+                    }
+                  }
+                ]
+                name "R1"
+                boundingObject USE ROTOR
+                physics DEF M3D Physics {
+                  density -1
+                  mass 2
+                  damping Damping {
+                  }
+                }
+              }
+            }
+          ]
+          name "R12"
+          controller "mover_servo_ct12"
+        }
         Solid {
           translation 0 0 10.14
           children [
             DEF C12 Shape {
               appearance PBRAppearance {
-                transparency 0.5
                 metalness 0
               }
               geometry Mesh {
@@ -62,8 +188,8 @@ Robot {
                 }
               ]
               endPoint Solid {
-                translation -0.3 0.07999999999999999 -2.13
-                rotation 0 0 1 0.23000000000000087
+                translation -0.3 0.07999999999999996 -2.13
+                rotation 0 0 1 0.22999999999999893
                 children [
                   DEF ASPA_SERVO Shape {
                     appearance PBRAppearance {
@@ -76,6 +202,10 @@ Robot {
                   }
                 ]
                 name "solid(1)"
+                physics Physics {
+                  density -1
+                  mass 0.1
+                }
               }
             }
             Solid {
@@ -98,29 +228,10 @@ Robot {
           controller "mover_servo_ct12"
         }
         Solid {
-          translation 0 0 8.1
-          rotation 0 0 1 1.8
-          children [
-            DEF ROTOR Shape {
-              appearance PBRAppearance {
-              }
-              geometry Mesh {
-                url [
-                  "../meshes/rotor.obj"
-                ]
-              }
-            }
-          ]
-          name "R1"
-          boundingObject USE ROTOR
-          physics USE M3D
-        }
-        Solid {
           translation 0 0 6.03
           children [
             DEF C15 Shape {
               appearance PBRAppearance {
-                transparency 0.5
                 metalness 0
               }
               geometry Mesh {
@@ -148,8 +259,8 @@ Robot {
                 }
               ]
               endPoint Solid {
-                translation -0.3 0.07999999999999999 -2.13
-                rotation 0 0 1 0.23000000000000087
+                translation -0.3 0.07999999999999996 -2.13
+                rotation 0 0 1 0.22999999999999893
                 children [
                   DEF ASPA_SERVO Shape {
                     appearance PBRAppearance {
@@ -162,6 +273,10 @@ Robot {
                   }
                 ]
                 name "solid(1)"
+                physics Physics {
+                  density -1
+                  mass 0.1
+                }
               }
             }
             Solid {
@@ -186,30 +301,11 @@ Robot {
           controller "mover_servo_ct15"
         }
         Solid {
-          translation 0 0 3.98
-          rotation 0 0 1 1.8
-          children [
-            DEF ROTOR Shape {
-              appearance PBRAppearance {
-              }
-              geometry Mesh {
-                url [
-                  "../meshes/rotor.obj"
-                ]
-              }
-            }
-          ]
-          name "R2"
-          boundingObject USE ROTOR
-          physics USE M3D
-        }
-        Solid {
           translation 0.0160313 0.0764827 2.12851
           rotation 0.01899286689548021 -0.009673869771031584 0.9997728178195002 0.0008207718687865466
           children [
             DEF C18 Shape {
               appearance PBRAppearance {
-                transparency 0.5
                 metalness 0
               }
               geometry Mesh {
@@ -237,8 +333,8 @@ Robot {
                 }
               ]
               endPoint Solid {
-                translation -0.3 0.07999999999999999 -2.13
-                rotation 0 0 1 0.23000000000000087
+                translation -0.3 0.07999999999999996 -2.13
+                rotation 0 0 1 0.22999999999999893
                 children [
                   DEF ASPA_SERVO Shape {
                     appearance PBRAppearance {
@@ -251,6 +347,10 @@ Robot {
                   }
                 ]
                 name "solid(1)"
+                physics Physics {
+                  density -1
+                  mass 0.1
+                }
               }
             }
             Solid {
@@ -275,39 +375,47 @@ Robot {
           controller "mover_servo_ct18"
         }
         Solid {
-          translation 0 0 0.06
-          rotation 0 0 1 1.8
+          translation 0 -0.0500198 2.06
+          rotation 1 0 0 1.5708
           children [
-            DEF ROTOR Shape {
+            DEF BODY Shape {
               appearance PBRAppearance {
+                baseColor 0.9 0.9 0.9
+                transparency 0.9
+                roughness 0.1
+                metalness 0
+                IBLStrength 5
               }
-              geometry Mesh {
+              geometry DEF BODY Mesh {
                 url [
-                  "../meshes/rotor.obj"
+                  "../meshes/alfredo_body_test4.obj"
                 ]
               }
             }
           ]
-          name "R3"
-          boundingObject USE ROTOR
+          name "cuerpo"
+          boundingObject USE BODY
           physics USE M3D
         }
         Solid {
-          translation 0 0 -4.64
+          translation 0 -7.27313e-06 1.98
+          rotation 1 0 0 1.5708
           children [
-            Shape {
+            DEF PLATE Shape {
               appearance PBRAppearance {
+                baseColor 1 0 0
+                transparency 0.1
                 metalness 0
               }
-              geometry DEF BASE Mesh {
+              geometry Mesh {
                 url [
-                  "../meshes/embudo.obj"
+                  "../meshes/plato.obj"
                 ]
               }
             }
           ]
-          name "base"
-          boundingObject USE BASE
+          name "plato"
+          boundingObject USE PLATE
           physics USE M3D
         }
       ]
@@ -317,7 +425,8 @@ Robot {
   physics USE M3D
 }
 Solid {
-  translation 4.34 1.24 17.13
+  translation 1.26557 3.30692 20.0307
+  rotation 0.8769600572075846 0.2079298506640833 -0.4332507764162484 -1.871942651000185
   children [
     DEF PILL Shape {
       appearance PBRAppearance {
@@ -331,6 +440,8 @@ Solid {
   boundingObject USE PILL
   physics Physics {
     density -1
-    mass 1
+    mass 0.5
+    damping Damping {
+    }
   }
 }

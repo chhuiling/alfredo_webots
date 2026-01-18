@@ -4,13 +4,19 @@ import math
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
 
-aspa_motor = robot.getDevice("aspa_motor_ct15")
+# 1. OBTENER EL MOTOR
+# En tu archivo .wbt le pusiste "aspa_motor_ct15"
+motor = robot.getDevice("aspa_motor_ct15")
 
-# Convertir 51.43 grados a radianes
+# 2. CONFIGURAR
 target_pos = math.radians(51.43)
 
-aspa_motor.setVelocity(2.0)
-aspa_motor.setPosition(target_pos)
+if motor:
+    motor.setVelocity(2.0)
+    motor.setPosition(target_pos)
+    print("Servo CT15 activado.")
+else:
+    print("ERROR: No se encuentra 'aspa_motor_ct15'")
 
 while robot.step(timestep) != -1:
     pass
