@@ -6,18 +6,10 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 
 WorldInfo {
   basicTimeStep 12
-  contactProperties [
-    ContactProperties {
-      material1 "pastilla"
-      coulombFriction [
-        0
-      ]
-    }
-  ]
 }
 Viewpoint {
-  orientation 0.17512277561254716 0.14113642588607747 -0.9743780184044903 1.9590714062768106
-  position 13.005029842761585 42.76370036024642 30.05078720048655
+  orientation 0.193258345896797 -0.0441795768267162 -0.9801527313294833 3.7275911116786946
+  position 29.19549269190183 -9.21845212138937 11.147414793553088
 }
 TexturedBackground {
 }
@@ -34,9 +26,6 @@ Robot {
       children [
         Robot {
           children [
-            Receiver {
-              channel 1
-            }
             HingeJoint {
               jointParameters HingeJointParameters {
                 axis 0 0 1
@@ -75,13 +64,10 @@ Robot {
             }
           ]
           name "R18"
-          controller "rotor_universal"
+          controller "mover_servo_ct18"
         }
         Robot {
           children [
-            Receiver {
-              channel 1
-            }
             HingeJoint {
               jointParameters HingeJointParameters {
                 axis 0 0 1
@@ -120,14 +106,11 @@ Robot {
             }
           ]
           name "R15"
-          controller "rotor_universal"
+          controller "mover_servo_ct15"
         }
         Robot {
           translation 0 0 10.44
           children [
-            Receiver {
-              channel 1
-            }
             HingeJoint {
               jointParameters HingeJointParameters {
                 axis 0 0 1
@@ -166,7 +149,7 @@ Robot {
             }
           ]
           name "R12"
-          controller "rotor_universal"
+          controller "mover_servo_ct12"
         }
         Solid {
           translation 0 0 10.14
@@ -194,9 +177,6 @@ Robot {
         Robot {
           translation 0.3 -0.08 11.27
           children [
-            Receiver {
-              channel 1
-            }
             HingeJoint {
               jointParameters HingeJointParameters {
                 axis 0 0 1
@@ -208,7 +188,7 @@ Robot {
                 }
               ]
               endPoint Solid {
-                translation -0.3 0.08000000000000002 -2.13
+                translation -0.3 0.07999999999999996 -2.13
                 rotation 0 0 1 0.22999999999999893
                 children [
                   DEF ASPA_SERVO Shape {
@@ -244,8 +224,8 @@ Robot {
               ]
             }
           ]
-          name "S12"
-          controller "rotor_universal"
+          name "servo_ct12"
+          controller "mover_servo_ct12"
         }
         Solid {
           translation 0 0 6.03
@@ -268,9 +248,6 @@ Robot {
         Robot {
           translation 0.3 -0.08 7.15
           children [
-            Receiver {
-              channel 1
-            }
             HingeJoint {
               jointParameters HingeJointParameters {
                 axis 0 0 1
@@ -320,8 +297,8 @@ Robot {
               ]
             }
           ]
-          name "S15"
-          controller "rotor_universal"
+          name "servo_ct15"
+          controller "mover_servo_ct15"
         }
         Solid {
           translation 0.0160313 0.0764827 2.12851
@@ -345,9 +322,6 @@ Robot {
         Robot {
           translation 0.3 -0.08 3.24
           children [
-            Receiver {
-              channel 1
-            }
             HingeJoint {
               jointParameters HingeJointParameters {
                 axis 0 0 1
@@ -397,8 +371,8 @@ Robot {
               ]
             }
           ]
-          name "S18"
-          controller "rotor_universal"
+          name "servo_ct18"
+          controller "mover_servo_ct18"
         }
         Solid {
           translation 0 -0.0500198 2.06
@@ -427,6 +401,21 @@ Robot {
           translation 0 -7.27313e-06 1.98
           rotation 1 0 0 1.5708
           children [
+            TouchSensor {
+              name "sensor_plato"
+              boundingObject DEF PLATE Shape {
+                appearance PBRAppearance {
+                  baseColor 1 0 0
+                  transparency 0.1
+                  metalness 0
+                }
+                geometry Mesh {
+                  url [
+                    "../meshes/plato.obj"
+                  ]
+                }
+              }
+            }
             DEF PLATE Shape {
               appearance PBRAppearance {
                 baseColor 1 0 0
@@ -449,195 +438,30 @@ Robot {
   ]
   name "alfredo"
   physics USE M3D
+  controller "supervisor_pastilla"
+  controllerArgs [
+    ""
+  ]
+  supervisor TRUE
 }
-Solid {
+DEF PILL Solid {
   translation 1.26557 3.30692 20.0307
   rotation 0.8769600572075846 0.2079298506640833 -0.4332507764162484 -1.871942651000185
   children [
     DEF PILL Shape {
       appearance PBRAppearance {
-        baseColor 0 1 1
-        metalness 0
       }
-      geometry Capsule {
-        height 0.7
-        radius 0.3
+      geometry Sphere {
+        radius 0.35
       }
     }
   ]
   name "pill-1"
-  contactMaterial "pastilla"
   boundingObject USE PILL
   physics Physics {
     density -1
-    mass 2
+    mass 0.5
     damping Damping {
     }
   }
-}
-Solid {
-  translation 1.8031 3.85891 20.5251
-  rotation 0.9152980485725806 0.2999690159186062 -0.2687900142640145 -2.5788353071795864
-  children [
-    DEF PILL Shape {
-      appearance PBRAppearance {
-        baseColor 1 1 0
-        metalness 0
-      }
-      geometry Capsule {
-        height 0.7
-        radius 0.3
-      }
-    }
-  ]
-  name "pill-2"
-  contactMaterial "pastilla"
-  boundingObject USE PILL
-  physics Physics {
-    density -1
-    mass 2
-    damping Damping {
-    }
-  }
-}
-Solid {
-  translation 2.58115 4.87864 16.959
-  rotation -0.5273558559618277 0.035780790227093205 0.8488907681401023 -2.978205307179586
-  children [
-    DEF PILL Shape {
-      appearance PBRAppearance {
-        baseColor 1 0.666667 0
-        metalness 0
-      }
-      geometry Capsule {
-        height 0.7
-        radius 0.3
-      }
-    }
-  ]
-  name "pill-3"
-  contactMaterial "pastilla"
-  boundingObject USE PILL
-  physics Physics {
-    density -1
-    mass 2
-    damping Damping {
-    }
-  }
-}
-Solid {
-  translation 2.66305 6.96873 12.0254
-  rotation 0.8125887976036676 -0.001725689570172219 -0.5828348548298508 2.96328
-  children [
-    DEF PILL Shape {
-      appearance PBRAppearance {
-        baseColor 0 1 0.498039
-        metalness 0
-      }
-      geometry Capsule {
-        height 0.7
-        radius 0.3
-      }
-    }
-  ]
-  name "pill-4"
-  contactMaterial "pastilla"
-  boundingObject USE PILL
-  physics Physics {
-    density -1
-    mass 2
-    damping Damping {
-    }
-  }
-}
-Solid {
-  translation 3.62185 7.11369 12.3416
-  rotation 0.7680791539392074 -0.3913260784299718 -0.5068711015876232 -2.2701353071795864
-  children [
-    DEF PILL Shape {
-      appearance PBRAppearance {
-        baseColor 0 0 1
-        metalness 0
-      }
-      geometry Capsule {
-        height 0.7
-        radius 0.3
-      }
-    }
-  ]
-  name "pill-5"
-  contactMaterial "pastilla"
-  boundingObject USE PILL
-  physics Physics {
-    density -1
-    mass 2
-    damping Damping {
-    }
-  }
-}
-Solid {
-  translation 3.33895 6.29494 12.8403
-  rotation 0.9152980485725806 0.2999690159186062 -0.2687900142640145 -2.5788353071795864
-  children [
-    DEF PILL Shape {
-      appearance PBRAppearance {
-        baseColor 1 1 0
-        metalness 0
-      }
-      geometry Capsule {
-        height 0.7
-        radius 0.3
-      }
-    }
-  ]
-  name "pill-6"
-  contactMaterial "pastilla"
-  boundingObject USE PILL
-  physics Physics {
-    density -1
-    mass 2
-    damping Damping {
-    }
-  }
-}
-Solid {
-  translation -1.7936 2.85156 20.713
-  rotation -0.8068929478226726 -0.10904199294885428 0.5805459624592868 1.4285
-  children [
-    DEF PILL Shape {
-      appearance PBRAppearance {
-        baseColor 1 0.666667 1
-        metalness 0
-      }
-      geometry Capsule {
-        height 0.7
-        radius 0.3
-      }
-    }
-  ]
-  name "pill-7"
-  contactMaterial "pastilla"
-  boundingObject USE PILL
-  physics Physics {
-    density -1
-    mass 2
-    damping Damping {
-    }
-  }
-}
-Robot {
-  translation 17.22 0 20.11
-  children [
-    Emitter {
-      channel 1
-    }
-    Shape {
-      appearance PBRAppearance {
-        metalness 0
-      }
-    }
-  ]
-  name "supervisor"
-  controller "supervisor_torre"
-  supervisor TRUE
 }
