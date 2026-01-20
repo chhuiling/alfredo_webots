@@ -3,24 +3,41 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/CircleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
   basicTimeStep 12
+  contactProperties [
+    ContactProperties {
+      material1 "pill"
+      coulombFriction [
+        0
+      ]
+      bounce 0.2
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+  ]
 }
 Viewpoint {
-  orientation 0.15304620763219148 -0.042145612647126095 -0.9873199104971007 3.857915406889582
-  position 54.67366460798115 -40.396815374061035 20.980531081519562
+  orientation -0.17921193849689726 -0.05831622671913137 0.9820805968969284 3.5094461886342625
+  position 47.514302423127376 24.606160231271545 34.486292128635505
 }
 TexturedBackground {
+  texture "noon_sunny_empty"
 }
 TexturedBackgroundLight {
 }
 CircleArena {
   radius 20
+  floorAppearance Parquetry {
+    type "dark strip"
+  }
 }
 Robot {
   translation -0.1071786605017715 -0.3869679827611363 7.909042681704227
-  rotation 0.0017485402009863144 0.00015810603679987126 0.9999984588036358 0.04076242876803916
+  rotation 0.0017485402009863144 0.00015810603679987126 0.9999984588036357 0.0407624287680369
   children [
     DEF ALFREDO Group {
       children [
@@ -481,18 +498,172 @@ Robot {
   supervisor TRUE
 }
 DEF PILL Solid {
-  translation 1.26557 3.30692 20.0307
+  translation 1.39687 3.16998 20.0407
   rotation 0.8769600572075846 0.2079298506640833 -0.4332507764162484 -1.871942651000185
   children [
     DEF PILL Shape {
       appearance PBRAppearance {
+        baseColor 0 1 1
+        metalness 0
       }
-      geometry Sphere {
-        radius 0.35
+      geometry Capsule {
+        height 0.7
+        radius 0.3
       }
     }
   ]
   name "pill-1"
+  contactMaterial "pill"
+  boundingObject USE PILL
+  physics Physics {
+    density -1
+    mass 0.5
+    damping Damping {
+    }
+  }
+}
+DEF PILL Solid {
+  translation 1.77627 3.81399 21.1874
+  rotation 0.4369308967595768 0.2920689309883548 -0.8507567989785281 -3.041625307179586
+  children [
+    DEF PILL Shape {
+      appearance PBRAppearance {
+        baseColor 1 1 0
+        metalness 0
+      }
+      geometry Capsule {
+        height 0.7
+        radius 0.3
+      }
+    }
+  ]
+  name "pill-1(1)"
+  contactMaterial "pill"
+  boundingObject USE PILL
+  physics Physics {
+    density -1
+    mass 0.5
+    damping Damping {
+    }
+  }
+}
+DEF PILL Solid {
+  translation 2.53868 4.9548 16.4751
+  rotation -0.4169639534126201 0.2217419752247705 -0.8814599015144907 2.73682
+  children [
+    DEF PILL Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.333333 0
+        metalness 0
+      }
+      geometry Capsule {
+        height 0.7
+        radius 0.3
+      }
+    }
+  ]
+  name "pill-1(2)"
+  contactMaterial "pill"
+  boundingObject USE PILL
+  physics Physics {
+    density -1
+    mass 0.5
+    damping Damping {
+    }
+  }
+}
+DEF PILL Solid {
+  translation 2.77 7.12114 12.5299
+  rotation 0.4369310243733241 0.2920680162924307 -0.8507570474577819 -3.041625307179586
+  children [
+    DEF PILL Shape {
+      appearance PBRAppearance {
+        baseColor 0.666667 0.333333 0.498039
+        metalness 0
+      }
+      geometry Capsule {
+        height 0.7
+        radius 0.3
+      }
+    }
+  ]
+  name "pill-1(3)"
+  contactMaterial "pill"
+  boundingObject USE PILL
+  physics Physics {
+    density -1
+    mass 0.5
+    damping Damping {
+    }
+  }
+}
+DEF PILL Solid {
+  translation 3.48047 6.04859 12.6686
+  rotation -0.2909910359883186 0.4201880519667605 0.8595151063005373 2.43946
+  children [
+    DEF PILL Shape {
+      appearance PBRAppearance {
+        baseColor 0.666667 1 0
+        metalness 0
+      }
+      geometry Capsule {
+        height 0.7
+        radius 0.3
+      }
+    }
+  ]
+  name "pill-1(4)"
+  contactMaterial "pill"
+  boundingObject USE PILL
+  physics Physics {
+    density -1
+    mass 0.5
+    damping Damping {
+    }
+  }
+}
+DEF PILL Solid {
+  translation 3.85586 6.8206 12.4088
+  rotation -0.38110981436431296 0.46835077186990726 0.7971216117281359 3.1373
+  children [
+    DEF PILL Shape {
+      appearance PBRAppearance {
+        baseColor 1 0.666667 1
+        metalness 0
+      }
+      geometry Capsule {
+        height 0.7
+        radius 0.3
+      }
+    }
+  ]
+  name "pill-1(5)"
+  contactMaterial "pill"
+  boundingObject USE PILL
+  physics Physics {
+    density -1
+    mass 0.5
+    damping Damping {
+    }
+  }
+}
+DEF PILL Solid {
+  translation -2.43806 3.59987 20.425
+  rotation 0.5928729461143732 0.4360569603672207 -0.6770199384663376 -2.1315553071795863
+  children [
+    DEF PILL Shape {
+      appearance PBRAppearance {
+        baseColor 0 1 0
+        metalness 0
+      }
+      geometry Capsule {
+        height 0.7
+        radius 0.3
+      }
+    }
+  ]
+  name "pill-1(6)"
+  contactMaterial "pill"
   boundingObject USE PILL
   physics Physics {
     density -1
